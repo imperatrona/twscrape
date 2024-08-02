@@ -149,6 +149,12 @@ class API:
                     if newCursors is not None and len(newCursors) > 0:
                         cursors = [*cursors, *newCursors]
 
+                # show replies marked as offensive
+                if queue == "TweetDetail":
+                    newCursors = self._get_cursors(obj, "ShowMoreThreadsPrompt")
+                    if newCursors is not None and len(newCursors) > 0:
+                        cursors = [*cursors, *newCursors]
+
                 rep, cnt, active = self._is_end(
                     rep, queue, els, cursors[0] if len(cursors) > 0 else None, cnt, limit
                 )
