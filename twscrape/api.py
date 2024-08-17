@@ -92,7 +92,7 @@ class API:
         is_cur = cur is not None
         is_lim = lim > 0 and new_total >= lim
 
-        return rep if is_res else None, new_total, is_cur and not is_lim
+        return rep if is_res or is_cur else None, new_total, is_cur and not is_lim
 
     def _get_cursors(self, obj: dict, cursor_type="Bottom"):
         return [
